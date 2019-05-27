@@ -23,4 +23,4 @@ alcanzable_color(X,Y,C) :- arco(X,Z,C),alcanzable_color(Z,Y,C).
 
 % alcanzable_otro_color(X,Y,C) Y es alcanzable desde X a traves de un camino
 % que tiene un color distinto a C.
-alcanzable_otro_color(X,Y,C) :- alcanzable_color(X,Y,Cp),color(Cp),Cp!=C
+alcanzable_otro_color(X,Y,C) :- alcanzable_color(X,Y,Cp),Cp!=C.
