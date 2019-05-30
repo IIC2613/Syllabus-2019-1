@@ -1,0 +1,2 @@
+#!/bin/sh
+clingo bodegas.lp | python3 process.py > config.js
