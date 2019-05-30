@@ -21,4 +21,4 @@ pintada(J) :- caja(J),color(C),es_de_color(J,C).
 %1 {es_de_color(a,C):color(C)} 1.
 %1 {es_de_color(b,C):color(C)} 1.
 
-#show es_de_color/2.
+%#show es_de_color/2.
