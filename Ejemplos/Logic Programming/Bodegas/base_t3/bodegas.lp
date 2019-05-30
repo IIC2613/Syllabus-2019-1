@@ -21,8 +21,12 @@ on(R,X,Y,T)   :- exec(R,wait,T-1),on(R,X,Y,T-1),time(T),rangeX(X),rangeY(Y).
 % Cada robot ejecuta una acción en cada instante de tiempo en 0..bound-1
 1 {exec(R,A,T-1) : action(A)} 1 :- robot(R),time(T).
 
-% no hay dos robots en la misma ubicación
+% no hay dos robots en la misma ubicación (MODIFICAR PARTE 1)
 :- on(R,X,Y,T),on(Rp,X,Y,T),R!=Rp.
+
+% dos robots no se pueden 'intercambiar' (MODIFICAR PARTE 2)
+:- on(R1,X1+1,Y1,T-1), on(R2,X1,Y1,T-1), on(R1,X1,Y1,T), on(R2,X1+1,Y1,T).
+:- on(R1,X1,Y1+1,T-1), on(R2,X1,Y1,T-1), on(R1,X1,Y1,T), on(R2,X1,Y1+1,T).
 
 % no hay un robot sobre un obstáculo
 :- on(R,X,Y,T),obstacle(X,Y).
@@ -32,9 +36,6 @@ on(R,X,Y,T)   :- exec(R,wait,T-1),on(R,X,Y,T-1),time(T),rangeX(X),rangeY(Y).
 :- on(R,X,Y,T),not rangeY(Y).
 
 
-% dos robots no se pueden 'intercambiar'
-:- on(R1,X1+1,Y1,T-1), on(R2,X1,Y1,T-1), on(R1,X1,Y1,T), on(R2,X1+1,Y1,T).
-:- on(R1,X1,Y1+1,T-1), on(R2,X1,Y1,T-1), on(R1,X1,Y1,T), on(R2,X1,Y1+1,T).
 
 % goal_achieved(R,T): robot R está en su objetivo en el tiempo T
 goal_achieved(R,T) :- on(R,X,Y,T),goal(R,X,Y).
