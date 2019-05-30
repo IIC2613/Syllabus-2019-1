@@ -1,0 +1,3 @@
+Para encontrar un modelo: clingo bodegas.lp
+Para generar nuevo archivo .js para visualizacion: ./run
+Para visualizar: abrir robot.html
